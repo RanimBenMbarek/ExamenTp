@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Collapsed content</h4>
+            <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    </div>
+    <div class="row">
+        {% for pfe in pfes %}
+            <div class="card mb-2 m-lg-2" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pfe.nomEtudiant }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ pfe.entreprise }}</h6>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
