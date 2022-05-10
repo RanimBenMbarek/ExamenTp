@@ -44,26 +44,29 @@ class PfeController extends AbstractController
             'pfes'=>$pfes
         ]);
     }
+
     /**
      * @Route("/entreprise",name="app_entreprise")
      */
-    public function nbreEntreprise(ManagerRegistry $doctrine){
+/*    public function nbreEntreprise(ManagerRegistry $doctrine){
         $repo=$doctrine->getRepository(Entreprise::class);
         $entreprises=$repo->findAll();
         return $this->render('pfe/affichage.html.twig',[
             'entreprises'=>$entreprises
         ]);
     }
+*/
     /**
-     * @Route ("/affichage/{id?0}",name="app_affichage")
+     * @Route ("/affichage",name="app_affichage")
      */
-    public function affichage($id,ManagerRegistry $doctrine){
+    public function affichage(ManagerRegistry $doctrine){
         $repository=$doctrine->getRepository(PFE::class);
-        $pfes=$repository->findBy(['entreprise' => "entreprise$id"]);
+        $entreprises=$repository->findByPFE();
         return $this->render('pfe/affichage.html.twig',[
-            'pfes'=>$pfes,
+            'entreprises'=>$entreprises,
 
         ]);
     }
+
 
 }
