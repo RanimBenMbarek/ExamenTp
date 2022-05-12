@@ -27,7 +27,9 @@ class PfeController extends AbstractController
             $manager->persist($data);
             $manager->flush();
             $this->addFlash("success","un nouveau pfe a ete ajoute avec success");
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_accueil',[
+                'id'=>$data->getId()
+            ]);
         }else{
             return  $this->render("pfe/index.html.twig",[
                 'form'=>$form->createView()
@@ -35,13 +37,11 @@ class PfeController extends AbstractController
         }
     }
     /**
-     * @Route("/accueil",name="app_accueil")
+     * @Route("/accueil/{id}",name="app_accueil")
      */
-    public function accueil(ManagerRegistry $doctrine){
-        $repository=$doctrine->getRepository(PFE::class);
-        $pfes=$repository->findAll();
+    public function accueil(PFE $data,ManagerRegistry $doctrine){
         return $this->render('pfe/accueil.html.twig',[
-            'pfes'=>$pfes
+            'pfe'=>$data
         ]);
     }
 
@@ -64,6 +64,16 @@ class PfeController extends AbstractController
         $entreprises=$repository->findByPFE();
         return $this->render('pfe/affichage.html.twig',[
             'entreprises'=>$entreprises,
+
+        ]);
+    }/**
+     * @Route ("/liste",name="app_liste")
+     */
+    public function liste(ManagerRegistry $doctrine){
+        $repository=$doctrine->getRepository(PFE::class);
+        $pfes=$repository->findAll();
+        return $this->render('pfe/liste.html.twig',[
+            'pfes'=>$pfes,
 
         ]);
     }

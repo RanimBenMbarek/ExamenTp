@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block body %}
     <div class="row">
-        {% set tab=['info','secondary'] %}
-        {%for entreprise in entreprises%}
+        {% set tab=['secondary','success'] %}
+        {%for pfe in pfes%}
             <div class="card text-white m-auto bg-{{tab[loop.index%2] }} mb-3 " style="width: 18rem;">
-                <div class="card-header">{{entreprise.0.entreprise.designation}}</div>
+                <div class="card-header">{{ pfe.nomEtudiant}}</div>
                 <div class="card-body">
-                    <h5 class="card-title">{{entreprise.1}} Pfe(s)</h5>
+                    <h5 class="card-title">{{pfe.entreprise}} </h5>
                 </div>
             </div>
         {%endfor%}

@@ -12,15 +12,12 @@
         </button>
     </nav>
     </div>
-    <div class="row">
-        {% for pfe in pfes %}
-            <div class="card mb-2 m-lg-2" style="width: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">{{ pfe.nomEtudiant }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ pfe.entreprise }}</h6>
-                </div>
-            </div>
-        {% endfor %}
+    <div class="card bg-light" style="width: 18rem;">
+        <div class="card-body">
+          {#   <h5 class="card-title">{{pfe.title}}</h5>#}
+            <h6 class="card-subtitle mb-2 text-muted">Student: {{pfe.nomEtudiant}}</h6>
+            <p class="card-text">Entreprise: {{pfe.entreprise}}</p>
+        </div>
     </div>
 
 {% endblock %}
